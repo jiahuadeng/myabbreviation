@@ -14,9 +14,7 @@ import java.util.Date;
 public class Abbre implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="create_date")
@@ -29,6 +27,7 @@ public class Abbre implements Serializable {
 	@Column(name="long_desc")
 	private String longDesc;
 
+	@Id
 	@Column(name="short_desc")
 	private String shortDesc;
 
@@ -40,13 +39,6 @@ public class Abbre implements Serializable {
 		this.shortDesc = shortDesc;
 	}
 
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public Date getCreateDate() {
 		return this.createDate;
@@ -86,6 +78,11 @@ public class Abbre implements Serializable {
 
 	public void setShortDesc(String shortDesc) {
 		this.shortDesc = shortDesc;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Abbre[shortDesc:%s, longDesc:%s, label:%s]", shortDesc,longDesc,label);
 	}
 
 }

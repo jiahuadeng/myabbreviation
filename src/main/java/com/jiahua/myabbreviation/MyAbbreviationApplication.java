@@ -18,8 +18,6 @@ import com.jiahua.myabbreviation.repository.AbbreRepository;
 
 @SpringBootApplication
 @Controller
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-@EnableJpaRepositories("com.jiahua.myabbreviation.repository")
 public class MyAbbreviationApplication {
 	private static final Logger log = LoggerFactory.getLogger(MyAbbreviationApplication.class);
 	
@@ -42,8 +40,8 @@ public class MyAbbreviationApplication {
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
-			for (Abbre customer : repository.findAll()) {
-				log.info(customer.toString());
+			for (Abbre abbre : repository.findAll()) {
+				log.info(abbre.toString());
 			}
 			log.info("");
 
