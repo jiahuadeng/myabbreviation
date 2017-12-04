@@ -27,9 +27,16 @@ public class Abbre implements Serializable {
 	@Column(name="long_desc")
 	private String longDesc;
 
-	@Id
+	
 	@Column(name="short_desc")
 	private String shortDesc;
+	
+	@Column(name="is_public")
+	private int isPublic;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
 
 	public Abbre() {
 	}
@@ -37,6 +44,7 @@ public class Abbre implements Serializable {
 		this.label = label;
 		this.longDesc = longDesc;
 		this.shortDesc = shortDesc;
+		this.createDate = new Date();
 	}
 
 
@@ -80,9 +88,21 @@ public class Abbre implements Serializable {
 		this.shortDesc = shortDesc;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public int getIsPublic() {
+		return isPublic;
+	}
+	public void setIsPublic(int isPublic) {
+		this.isPublic = isPublic;
+	}
 	@Override
 	public String toString() {
-		return String.format("Abbre[shortDesc:%s, longDesc:%s, label:%s]", shortDesc,longDesc,label);
+		return String.format("Abbre[id:%d,shortDesc:%s, longDesc:%s, label:%s, creator:%s, createDate:%tF]", id,shortDesc,longDesc,label,creator,createDate);
 	}
 
 }
